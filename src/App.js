@@ -21,13 +21,19 @@ const Button = styled.button`
   border: solid 2px red;
   border-radius:4px;
 `
+//para poder extender el css de un componente a otro utilizo () y le paso el componente que quiero extender
+const BlockButton = styled(Button)`
+  width:100%;
+  font-size:24px
+`
 
 function App() {
   return (
     <Content>
       <P>Hola soy un parrafo</P>
       <Button>Enviar </Button>
-      <Button primary={"hola"}>Enviar </Button>
+      <Button primary={"hola"}>Enviar </Button><br/><br/>
+      <BlockButton primary={"hola"}>Enviar </BlockButton>
     </Content>
     
   );
