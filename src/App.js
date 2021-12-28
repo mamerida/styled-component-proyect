@@ -27,6 +27,22 @@ const BlockButton = styled(Button)`
   font-size:24px
 `
 
+//como agregar estilos a componentes ya creados?
+//es caso de querer complementar. Le pasamos el componente como parametro le damos el estilo necesario y reemplazamos 
+//el componente en el returnd 
+//SI O SI SACANDO LA PROPIEDAD DE CLASSNAME Y SACANDOLA AL COMPONENTE SI NO, NO FUNCIONA 
+
+
+const Link = ({ className, ...props}) =>{
+  return <a className={className} {...props}></a>
+
+}
+
+const StyledLink = styled(Link)`
+  color:blue;
+
+`
+
 function App() {
   return (
     <Content>
@@ -35,6 +51,9 @@ function App() {
       <Button primary={"hola"}>Enviar </Button><br/><br/>
       {/* al utilizar la palabra reservada as para poder comportarse de otra manera por ejemplo un link. menu de navegacion  a es de anchor */}
       <BlockButton primary={"hola"} as="a" href="#">Enviar </BlockButton>
+      <BlockButton primary={"hola"}>Enviar </BlockButton>
+      <Link className="juanito">LINK</Link>
+      <StyledLink>Link con estilo</StyledLink>
     </Content>
     
   );
