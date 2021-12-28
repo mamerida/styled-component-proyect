@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes}from "styled-components";
 
 //creo el elemento utilizando los componentes de styles y agrego las propieades css
 const P = styled.p`
@@ -78,6 +78,21 @@ const Input =styled.input.attrs(props => ({
 const Password = styled(Input).attrs({
   type:'password'
 })``
+//para poder agregar animaciones utilizo keyframes indicando el inicio y el final junto con la accion a realizar 
+const girar = keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform : rotate(360deg);
+  }
+`
+
+const Rotar = styled.div`
+  display: inline-block;
+  animation: ${girar} 2s linear infinite;
+`
+
 function App() {
   return (
     <Content>
@@ -92,6 +107,8 @@ function App() {
       <StyledLink>Link con estilo</StyledLink><br/><br/>
       <Input color ="blue"/>
       <Password color ="blue"/>
+      <br/>
+      <Rotar>Estoy Girando</Rotar>
     </Content>
     
   );
