@@ -14,12 +14,34 @@ const Content = styled.div`
 
 //se crea renderizado condicional mediante los templade strings 
 //en este caso en caos de existir la propiedad de primario pondra un boton u otro
+//para aplicar propiedades como hover es &:hover
+
+//para agregar estilo segun el nombre de la clase seria &.<nombreDeLaClase>
+
+//en caso de agregar solamente el .info por ejemplo lo que va a hacer es aplicar los estilos a los elementos que esten dentro de la etiqueta padre.
+//bastnate util para generar una clase container e insertar todos los elementos dentro del mismo
 const Button = styled.button`
+  transition: box-shadow 0.2s ease;
   background-color : ${props => props.primary ? 'red' : 'white '};
   color: ${props => props.primary ? 'white' : 'red '};
   padding: 10px 15px;
   border: solid 2px red;
   border-radius:4px;
+
+  &:hover {
+    box-shadow: 1px 2px 5px rgb(0,0,0,0.3);
+
+  }
+
+  &.secondary{
+    background-color:blue;
+    border: solid 2px blue;
+    color:white;
+  }
+  .info{
+    font-size:px;
+
+  }
 `
 //para poder extender el css de un componente a otro utilizo () y le paso el componente que quiero extender
 const BlockButton = styled(Button)`
@@ -32,7 +54,7 @@ const BlockButton = styled(Button)`
 //el componente en el returnd 
 //SI O SI SACANDO LA PROPIEDAD DE CLASSNAME Y SACANDOLA AL COMPONENTE SI NO, NO FUNCIONA 
 
-
+// para evitar problemas de rendimiento siempre definir los style component por afuera de los metodos de render 
 const Link = ({ className, ...props}) =>{
   return <a className={className} {...props}></a>
 
@@ -40,14 +62,14 @@ const Link = ({ className, ...props}) =>{
 
 const StyledLink = styled(Link)`
   color:blue;
-
 `
 
 function App() {
   return (
     <Content>
       <P>Hola soy un parrafo</P>
-      <Button>Enviar </Button>
+      <Button >Enviar <p className="info"> informacion</p> </Button>
+      <Button className="secondary" >Enviar </Button>
       <Button primary={"hola"}>Enviar </Button><br/><br/>
       {/* al utilizar la palabra reservada as para poder comportarse de otra manera por ejemplo un link. menu de navegacion  a es de anchor */}
       <BlockButton primary={"hola"} as="a" href="#">Enviar </BlockButton>
