@@ -63,7 +63,21 @@ const Link = ({ className, ...props}) =>{
 const StyledLink = styled(Link)`
   color:blue;
 `
+//crear componentes sin necesidad de retornar compentes html y crearlo directamente con styled.
+//puedo evaluar las propiedades dentro de la asignacion de propieades
+const Input =styled.input.attrs(props => ({
+  type:'text',
+  color:props.color || 'red'
+}))`
+  font-size:20px;
+  border: 1px solid red;
+  color: ${ props=> props.color};
 
+`
+//creo el componente le paso el componente anterior para poder copiar sus propiedades y las reescribo 
+const Password = styled(Input).attrs({
+  type:'password'
+})``
 function App() {
   return (
     <Content>
@@ -75,7 +89,9 @@ function App() {
       <BlockButton primary={"hola"} as="a" href="#">Enviar </BlockButton>
       <BlockButton primary={"hola"}>Enviar </BlockButton>
       <Link className="juanito">LINK</Link>
-      <StyledLink>Link con estilo</StyledLink>
+      <StyledLink>Link con estilo</StyledLink><br/><br/>
+      <Input color ="blue"/>
+      <Password color ="blue"/>
     </Content>
     
   );
