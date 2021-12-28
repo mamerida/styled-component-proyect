@@ -33,7 +33,8 @@ function App() {
       <P>Hola soy un parrafo</P>
       <Button>Enviar </Button>
       <Button primary={"hola"}>Enviar </Button><br/><br/>
-      <BlockButton primary={"hola"}>Enviar </BlockButton>
+      {/* al utilizar la palabra reservada as para poder comportarse de otra manera por ejemplo un link. menu de navegacion  a es de anchor */}
+      <BlockButton primary={"hola"} as="a" href="#">Enviar </BlockButton>
     </Content>
     
   );
